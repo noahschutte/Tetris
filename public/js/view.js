@@ -9,3 +9,12 @@ var BoardView = function() {
   }
 }
 
+BoardView.prototype.renderBoard = function(board) {
+  for (var r = 0; r < board.grid.length; r++) {
+    for (var c = 0; c < board.grid[r].length; c++) {
+      if (board.grid[r][c] === "X") {
+        $('#row-' + r + ' .col-' + c).addClass('full');
+      }
+    }
+  }
+}

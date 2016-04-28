@@ -21,7 +21,7 @@ function startGame() {
 }
 
 Game.prototype.newPiece = function() {
-  this.activePiece = new Piece("L", "red")
+  this.activePiece = new Piece("Z", "red")
 };
 
 Game.prototype.updateTime = function() {
@@ -42,7 +42,7 @@ Game.prototype.coreGameLoop = function() {
     this.newPiece();
   }
   this.board.update(this.activePiece);
-  // this.boardView.renderBoard(board);
+  this.boardView.renderBoard(this.board);
 };
 
 Game.prototype.startGameCycle = function() {
