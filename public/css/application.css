@@ -1,0 +1,28 @@
+body div {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+td {
+  border: 1px solid black;
+}
+
+#row-0 td {
+  border: 1px dashed black;
+}
+
+#row-1 td {
+  border: 1px dashed black;
+}
+
+#row-2 td {
+  border: 1px dashed black;
+}
+
+#row-3 td {
+  border: 1px dashed black;
+}
+
+.full {
+  background-color: black;
+}
