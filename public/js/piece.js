@@ -14,7 +14,7 @@ function Piece(shape, color) {
       this.shapeCoords = [[0,0], [0,1], [0,2], [0,-1]]
       break;
     case "Z":
-      this.shapeCoords = [[0,0], [0,1], [1,-1], [1,0]]
+      this.shapeCoords = [[0,0], [0,1], [-1,1], [1,0]]
       break;
     case "S":
       this.shapeCoords = [[0,0], [0,1], [1,1], [-1,0]]
@@ -25,9 +25,9 @@ function Piece(shape, color) {
   };
   this.color = color;
   this.isActive = true;
-  this.indexCoord = [5, 2];
-  this.footprint = this.setFootprint();
+  this.indexCoord = [2, 5];
   this.buildSquares();
+  this.footprint = this.setFootprint();
 }
 
 Piece.prototype.buildSquares = function() {
@@ -38,7 +38,7 @@ Piece.prototype.buildSquares = function() {
 };
 
 Piece.prototype.setFootprint = function() {
-  return [this.indexCoord, this.squares[0].boardCoord, this.squares[1].boardCoord, this.squares[2].boardCoord];
+  return [this.indexCoord, this.squares[1].boardCoord(this.indexCoord), this.squares[2].boardCoord(this.indexCoord), this.squares[3].boardCoord(this.indexCoord)];
 };
 
 Piece.prototype.moveLeft = function() {

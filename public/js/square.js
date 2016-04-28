@@ -23,7 +23,7 @@ Square.prototype.rotate = function() {
 };
 
 Square.prototype.boardCoord = function(axisCoord) {
-  this.innerCoord = [[this.innerCoord[0] + axisCoord[0]], [this.innerCoord[1] + axisCoord[1]]]
+  return [this.innerCoord[0] + axisCoord[0], this.innerCoord[1] + axisCoord[1]]
 };
 
 //The below only works for non-nested arrays (i.e. arrays without other arrays or object in them)

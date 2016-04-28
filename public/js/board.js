@@ -27,9 +27,7 @@ var Board = function() {
 }
 
 Board.prototype.update = function(activePiece) {
-  debugger;
-  for (i = 0; i < activePiece.footprint.length; i++) {
-    this.grid[activePiece.footprint[i][0], activePiece.footprint[i][1]] = "X"
+  for (var i = 0; i < activePiece.footprint.length; i++) {
+    this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1]] = "X";
   }
-  debugger;
 };
