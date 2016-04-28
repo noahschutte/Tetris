@@ -11,6 +11,8 @@ var BoardView = function() {
   }
 }
 
+var boardView = new BoardView
+
 var boardArray = [
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
