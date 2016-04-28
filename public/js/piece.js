@@ -26,6 +26,7 @@ function Piece(shape, color) {
   this.color = color;
   this.isActive = true;
   this.indexCoord = [5, 2];
+  this.footprint = this.setFootprint();
   this.buildSquares();
 }
 
@@ -36,21 +37,29 @@ Piece.prototype.buildSquares = function() {
   });
 };
 
+Piece.prototype.setFootprint = function() {
+  return [this.indexCoord, this.squares[0].boardCoord, this.squares[1].boardCoord, this.squares[2].boardCoord];
+};
+
 Piece.prototype.moveLeft = function() {
   this.indexCoord[0]--;
+  this.footprint = this.setFootprint();
 };
 
 Piece.prototype.moveRight = function() {
   this.indexCoord[0]++;
+  this.footprint = this.setFootprint();
 };
 
 Piece.prototype.moveDown = function() {
   this.indexCoord[1]++;
+  this.footprint = this.setFootprint();
 }
 
 Piece.prototype.rotate = function() {
   this.squares.forEach(function(square) {
     square.rotate();
   });
+  this.footprint = this.setFootprint();
 };
 
