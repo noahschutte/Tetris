@@ -22,6 +22,10 @@ Square.prototype.rotate = function() {
   this.innerCoord = this.NextCoord(this.innerCoord)
 };
 
+Square.prototype.boardCoord = function(axisCoord) {
+  this.innerCoord = [[this.innerCoord[0] + axisCoord[0]], [this.innerCoord[1] + axisCoord[1]]]
+};
+
 //The below only works for non-nested arrays (i.e. arrays without other arrays or object in them)
 function sameArray(array1, array2) {
   if(array1.length !== array2.length){
