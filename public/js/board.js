@@ -1,19 +1,5 @@
-$(document).ready(function() {
-
-var BoardView = function() {
-  for (i = 0; i < 24; i++) {
-    $('#boardView').append('<tr id="row-' + i + '"></tr>')
-  }
-  for (i = 0; i < 24; i++) {
-    for (c = 0; c < 10; c++) {
-      $('#row-' + i).append('<td class="col-' + c + '">[]</td>')
-    }
-  }
-}
-
-var boardView = new BoardView
-
-var boardArray = [
+var Board = function() {
+  this.grid = [
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
@@ -38,7 +24,12 @@ var boardArray = [
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0]]
+}
 
-});
-
-
+Board.prototype.update = function(activePiece) {
+  debugger;
+  for (i = 0; i < activePiece.footprint.length; i++) {
+    this.grid[activePiece.footprint[i][0], activePiece.footprint[i][1]] = "X"
+  }
+  debugger;
+};

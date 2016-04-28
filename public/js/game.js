@@ -5,10 +5,13 @@ $(document).ready(function() {
   })
 
 function Game() {
+  this.board = new Board();
+  this.boardView = new BoardView();
   this.frameRate = 25;
   this.coreTimer = 0;
   this.timeRunning = 0;
   this.difficultyLevel = 1;
+  this.activePiece = null
 }
 
 var game = new Game();
@@ -16,6 +19,10 @@ var game = new Game();
 function startGame() {
   game.startGameCycle();
 }
+
+Game.prototype.newPiece = function() {
+  this.activePiece = new Piece("L", "red")
+};
 
 Game.prototype.updateTime = function() {
   $('#timer').html(this.secondsRunning());
@@ -26,15 +33,22 @@ Game.prototype.secondsRunning = function() {
 };
 
 Game.prototype.coreGameLoop = function() {
-    this.coreTimer++;
+  this.coreTimer++;
 
-    if (this.coreTimer % 10 === 0) {
-      this.updateTime();
-    }
+  if (this.coreTimer % 10 === 0) {
+    this.updateTime();
+  }
+  if (!this.activePiece) {
+    this.newPiece();
+  }
+  this.board.update(this.activePiece);
+  // this.boardView.renderBoard(board);
 };
 
 Game.prototype.startGameCycle = function() {
   setInterval(this.coreGameLoop.bind(this), 1000 / this.frameRate);
 };
 
+
 });
+
