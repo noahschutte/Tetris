@@ -11,8 +11,6 @@ var BoardView = function() {
   }
 }
 
-var boardView = new BoardView
-
 var boardArray = [
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
@@ -38,13 +36,6 @@ var boardArray = [
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0]]
-
-var Game = function() {
-  this.time = 0
-}
-
-var game = new Game
-
 
 });
 
