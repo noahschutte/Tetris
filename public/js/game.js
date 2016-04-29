@@ -34,26 +34,29 @@ Game.prototype.secondsRunning = function() {
   return Math.floor(this.coreTimer / this.frameRate);
 };
 
-
 Game.prototype.coreGameLoop = function() {
-  this.coreTimer++;
+  // debugger;
+  // while (!this.board.deadSquareAtTop(this.board)) {
+    this.coreTimer++;
 
-  if (this.coreTimer % 10 === 0) {
-    this.updateTime();
-  }
-
-  if (this.coreTimer % 10 === 0) {
-    if (this.board.canMoveDown(this.activePiece)) {
-      this.activePiece.moveDown();
-    } else {
-      this.board.settle(this.activePiece);
-      this.activePiece = this.newPiece();
+    if (this.coreTimer % 10 === 0) {
+      this.updateTime();
     }
-  };
-  this.board.clearActivePiece();
-  this.board.placeActivePiece(this.activePiece);
-  this.boardView.clearBoard(this.board);
-  this.boardView.renderBoard(this.board);
+
+    if (this.coreTimer % 10 === 0) {
+      if (this.board.canMoveDown(this.activePiece)) {
+        this.activePiece.moveDown();
+      } else {
+        this.board.settle(this.activePiece);
+        this.activePiece = this.newPiece();
+      }
+    };
+    this.board.clearActivePiece();
+    this.board.placeActivePiece(this.activePiece);
+    this.boardView.clearBoard(this.board);
+    this.boardView.renderBoard(this.board);
+  // }
+  // console.log("Game Over")
 };
 
 Game.prototype.startGameCycle = function() {

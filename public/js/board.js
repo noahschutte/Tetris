@@ -54,7 +54,6 @@ Board.prototype.settle = function(activePiece) {
 
 Board.prototype.canMoveDown = function(activePiece) {
   for (i = 0; i < activePiece.footprint.length; i++) {
-    console.log(this.grid[activePiece.footprint[i][0] + 1])
     if (!this.grid[activePiece.footprint[i][0] + 1] ||
         this.grid[activePiece.footprint[i][0] + 1][activePiece.footprint[i][1]] ==="C") {
       return false;
@@ -81,4 +80,15 @@ Board.prototype.canMoveRight = function(activePiece) {
     };
   };
   return true;
+}
+
+Board.prototype.deadSquareAtTop = function(board) {
+  for (var r = 0; r < 4; r++) {
+    for (var c = 0; c < 10; c++) {
+      if (this.grid[r][c] === "C") {
+        return true
+      }
+    }
+  }
+  return false
 }
