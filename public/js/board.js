@@ -115,9 +115,11 @@ Board.prototype.deleteCompleteRows = function(board) {
 }
 
 Board.prototype.clearCompleteRows = function(board, completeRows) {
-  for (var r = 0; r < completeRows.length; r++) {
-    for (var c = 0; c < 10; c++) {
-      this.grid[completeRows[r]][c] = 1
+  for (var targetIndex = 0; targetIndex < completeRows.length; targetIndex++) {
+    for (var r = completeRows[targetIndex]; r > 1; r--) {
+      for (var c = 0; c < 10; c++) {
+        this.grid[r][c] = this.grid[r-1][c]
+      }
     }
   }
   this.dropDeadSquares(board)
