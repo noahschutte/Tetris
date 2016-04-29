@@ -81,3 +81,14 @@ Board.prototype.canMoveRight = function(activePiece) {
   };
   return true;
 }
+
+Board.prototype.deadSquareAtTop = function(board) {
+  for (var r = 0; r < 4; r++) {
+    for (var c = 0; c < 10; c++) {
+      if (this.grid[r][c] === "C") {
+        return true
+      }
+    }
+  }
+  return false
+}
