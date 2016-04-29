@@ -63,4 +63,9 @@ Piece.prototype.rotate = function() {
   this.footprint = this.setFootprint();
 };
 
+Piece.prototype.potentialFootprint = function () {
+  console.log("in potentialFootprint");
+  return [this.indexCoord, this.squares[1].nextBoardCoord(this.indexCoord), this.squares[2].nextBoardCoord(this.indexCoord), this.squares[3].nextBoardCoord(this.indexCoord)];
+}
+
 

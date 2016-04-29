@@ -8,10 +8,10 @@ var rotateArrays = [[[0,1], [-1,0], [0,-1], [1,0]],
                     [[1,1], [-1,1], [-1,-1], [1,-1]],
                     [[0,0]]];
 
-Square.prototype.NextCoord = function(currentCoord) {
+Square.prototype.nextCoord = function() {
   for (i=0; i<rotateArrays.length; i++) {
     for (j=0; j<rotateArrays[i].length; j++) {
-      if (sameArray(rotateArrays[i][j], currentCoord)) {
+      if (sameArray(rotateArrays[i][j], this.innerCoord)) {
         return rotateArrays[i][(j+1)] || rotateArrays[i][0]
       }
     };
@@ -19,12 +19,17 @@ Square.prototype.NextCoord = function(currentCoord) {
 };
 
 Square.prototype.rotate = function() {
-  this.innerCoord = this.NextCoord(this.innerCoord)
+  this.innerCoord = this.nextCoord(this.innerCoord)
 };
 
 Square.prototype.boardCoord = function(axisCoord) {
   return [this.innerCoord[0] + axisCoord[0], this.innerCoord[1] + axisCoord[1]]
 };
+
+Square.prototype.nextBoardCoord = function(axisCoord) {
+  console.log("in nextBoardCoord")
+  return [(this.nextCoord()[0] + axisCoord[0]), (this.nextCoord()[1] + axisCoord[1])]
+}
 
 //The below only works for non-nested arrays (i.e. arrays without other arrays or object in them)
 function sameArray(array1, array2) {

@@ -53,7 +53,7 @@ Board.prototype.settle = function(activePiece) {
 };
 
 Board.prototype.canMoveDown = function(activePiece) {
-  for (i = 0; i < activePiece.footprint.length; i++) {
+  for (var i = 0; i < activePiece.footprint.length; i++) {
     if (!this.grid[activePiece.footprint[i][0] + 1] ||
         this.grid[activePiece.footprint[i][0] + 1][activePiece.footprint[i][1]] ==="C") {
       return false;
@@ -63,7 +63,7 @@ Board.prototype.canMoveDown = function(activePiece) {
 }
 
 Board.prototype.canMoveLeft = function(activePiece) {
-  for (i = 0; i < activePiece.footprint.length; i++) {
+  for (var i = 0; i < activePiece.footprint.length; i++) {
     if (!this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1] - 1] ||
         this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1] - 1] ==="C") {
       return false;
@@ -73,9 +73,20 @@ Board.prototype.canMoveLeft = function(activePiece) {
 }
 
 Board.prototype.canMoveRight = function(activePiece) {
-  for (i = 0; i < activePiece.footprint.length; i++) {
+  for (var i = 0; i < activePiece.footprint.length; i++) {
     if (!this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1] + 1] ||
         this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1] + 1] ==="C") {
+      return false;
+    };
+  };
+  return true;
+}
+
+Board.prototype.canRotate = function(activePiece) {
+  for (var k = 0; k < activePiece.footprint.length; k++) {
+    console.log("in canRotate")
+    if (!this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[k][1]] ||
+        this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[i][k]] ==="C") {
       return false;
     };
   };
