@@ -11,18 +11,20 @@ function Game() {
   this.coreTimer = 0;
   this.timeRunning = 0;
   this.difficultyLevel = 1;
-  this.activePiece = null
+  this.activePiece = this.newPiece()
 }
+
+var shapesArray = ["L", "J", "T", "LINE", "Z", "S", "BOX"]
+
+Game.prototype.newPiece = function() {
+  return new Piece(shapesArray[Math.floor(Math.random()*7)], "red")
+};
 
 var game = new Game();
 
 function startGame() {
   game.startGameCycle();
 }
-
-Game.prototype.newPiece = function() {
-  this.activePiece = new Piece(shapesArray[Math.floor(Math.random()*7)], "red")
-};
 
 Game.prototype.updateTime = function() {
   $('#timer').html(this.secondsRunning());
@@ -32,7 +34,6 @@ Game.prototype.secondsRunning = function() {
   return Math.floor(this.coreTimer / this.frameRate);
 };
 
-var shapesArray = ["L", "J", "T", "LINE", "Z", "S", "BOX"]
 
 Game.prototype.coreGameLoop = function() {
   this.coreTimer++;
@@ -40,15 +41,16 @@ Game.prototype.coreGameLoop = function() {
   if (this.coreTimer % 10 === 0) {
     this.updateTime();
   }
-  if (!this.activePiece) {
-    this.newPiece();
-  }
-  this.board.clearActivePiece();
-  // if (this.activePiece.canMoveDown()) {
-  // }
+
   if (this.coreTimer % 10 === 0) {
-  this.activePiece.moveDown();
-  }
+    if (this.board.canMoveDown(this.activePiece)) {
+      this.activePiece.moveDown();
+    } else {
+      this.board.settle(this.activePiece);
+      this.activePiece = newPiece();
+    }
+  };
+  this.board.clearActivePiece();
   this.board.placeActivePiece(this.activePiece);
   this.boardView.clearBoard(this.board);
   this.boardView.renderBoard(this.board);
