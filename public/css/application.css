@@ -4,6 +4,7 @@ body div {
 }
 
 td {
+  color: white;
   border: 1px solid black;
 }
 
@@ -13,9 +14,15 @@ td {
 }
 
 .full {
+  color: black;
   background-color: black;
 }
 
 #hidden {
   display: none;
+}
+
+.active {
+  background-color: red;
+  color: red;
 }
