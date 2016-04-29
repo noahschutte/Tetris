@@ -84,7 +84,6 @@ Board.prototype.canMoveRight = function(activePiece) {
 
 Board.prototype.canRotate = function(activePiece) {
   for (var k = 0; k < activePiece.footprint.length; k++) {
-    console.log("in canRotate")
     if (!this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[k][1]] ||
         this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[i][k]] ==="C") {
       return false;
