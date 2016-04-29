@@ -8,7 +8,7 @@ function Piece(shape, color) {
       this.shapeCoords = [[0,0], [1,0], [2,0], [0,-1]]
       break;
     case "T":
-      this.shapeCoords = [[0,0], [1,0], [0,-1], [0,-1]]
+      this.shapeCoords = [[0,0], [1,0], [0,-1], [0,1]]
       break;
     case "LINE":
       this.shapeCoords = [[0,0], [1,0], [2,0], [-1,0]]
