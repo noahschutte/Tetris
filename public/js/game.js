@@ -47,7 +47,7 @@ Game.prototype.coreGameLoop = function() {
       this.activePiece.moveDown();
     } else {
       this.board.settle(this.activePiece);
-      this.activePiece = newPiece();
+      this.activePiece = this.newPiece();
     }
   };
   this.board.clearActivePiece();

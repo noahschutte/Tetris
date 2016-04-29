@@ -54,9 +54,9 @@ Board.prototype.settle = function(activePiece) {
 
 Board.prototype.canMoveDown = function(activePiece) {
   for (i = 0; i < activePiece.footprint.length; i++) {
-    debugger;
-    if ((this.grid[activePiece.footprint[i][0] + 1][activePiece.footprint[i][1]] === undefined) ||
-        (this.grid[activePiece[i][0] + 1][activePiece[i][1]] ==="C")) {
+    console.log(this.grid[activePiece.footprint[i][0] + 1])
+    if (!this.grid[activePiece.footprint[i][0] + 1] ||
+        this.grid[activePiece.footprint[i][0] + 1][activePiece.footprint[i][1]] ==="C") {
       return false;
     };
   };
@@ -66,7 +66,7 @@ Board.prototype.canMoveDown = function(activePiece) {
 Board.prototype.canMoveLeft = function(activePiece) {
   for (i = 0; i < activePiece.footprint.length; i++) {
     if ((this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1] - 1] === undefined) ||
-        (this.grid[activePiece[i][0]][activePiece[i][1] - 1] ==="C")) {
+        (this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1] - 1] ==="C")) {
       return false;
     };
   };
@@ -75,8 +75,8 @@ Board.prototype.canMoveLeft = function(activePiece) {
 
 Board.prototype.canMoveRight = function(activePiece) {
   for (i = 0; i < activePiece.footprint.length; i++) {
-    if ((this.grid[activePiece[i][0]][activePiece[i][1] + 1] === undefined) ||
-        (this.grid[activePiece[i][0]][activePiece[i][1] + 1] ==="C")) {
+    if ((this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1] + 1] === undefined) ||
+        (this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1] + 1] ==="C")) {
       return false;
     };
   };
