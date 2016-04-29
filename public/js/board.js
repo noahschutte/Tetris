@@ -121,5 +121,4 @@ Board.prototype.clearCompleteRows = function(board, completeRows) {
       }
     }
   }
-  this.dropDeadSquares(board)
 }
