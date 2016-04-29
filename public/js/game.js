@@ -21,7 +21,7 @@ function startGame() {
 }
 
 Game.prototype.newPiece = function() {
-  this.activePiece = new Piece("Z", "red")
+  this.activePiece = new Piece(shapesArray[Math.floor(Math.random()*7)], "red")
 };
 
 Game.prototype.updateTime = function() {
@@ -32,6 +32,8 @@ Game.prototype.secondsRunning = function() {
   return Math.floor(this.coreTimer / this.frameRate);
 };
 
+var shapesArray = ["L", "J", "T", "LINE", "Z", "S", "BOX"]
+
 Game.prototype.coreGameLoop = function() {
   this.coreTimer++;
 
@@ -41,7 +43,14 @@ Game.prototype.coreGameLoop = function() {
   if (!this.activePiece) {
     this.newPiece();
   }
-  this.board.update(this.activePiece);
+  this.board.clearActivePiece();
+  // if (this.activePiece.canMoveDown()) {
+  // }
+  if (this.coreTimer % 10 === 0) {
+  this.activePiece.moveDown();
+  }
+  this.board.placeActivePiece(this.activePiece);
+  this.boardView.clearBoard(this.board);
   this.boardView.renderBoard(this.board);
 };
 

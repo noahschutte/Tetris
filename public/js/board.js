@@ -26,8 +26,18 @@ var Board = function() {
   [0,0,0,0,0,0,0,0,0,0]]
 }
 
-Board.prototype.update = function(activePiece) {
+Board.prototype.placeActivePiece = function(activePiece) {
   for (var i = 0; i < activePiece.footprint.length; i++) {
     this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1]] = "X";
+  }
+};
+
+Board.prototype.clearActivePiece = function() {
+  for (var r = 0; r < this.grid.length; r++) {
+    for (var c = 0; c < 10; c++) {
+      if (this.grid[r][c] === "X") {
+        this.grid[r][c] = 0
+      }
+    }
   }
 };
