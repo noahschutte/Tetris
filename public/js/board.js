@@ -123,7 +123,3 @@ Board.prototype.clearCompleteRows = function(board, completeRows) {
   }
   this.dropDeadSquares(board)
 }
-
-Board.prototype.dropDeadSquares = function(board) {
-
-}
