@@ -2,25 +2,25 @@ function Piece(shape, color) {
   this.shape = shape;
   switch(shape) {
     case "L":
-      this.shapeCoords = [[0,0], [0,1], [0,2], [1,0]]
+      this.shapeCoords = [[0,0], [1,0], [2,0], [0,1]]
       break;
     case "J":
-      this.shapeCoords = [[0,0], [0,1], [0,2], [-1,0]]
+      this.shapeCoords = [[0,0], [1,0], [2,0], [0,-1]]
       break;
     case "T":
-      this.shapeCoords = [[0,0], [0,1], [-1,0], [1,0]]
+      this.shapeCoords = [[0,0], [1,0], [0,-1], [0,-1]]
       break;
     case "LINE":
-      this.shapeCoords = [[0,0], [0,1], [0,2], [0,-1]]
+      this.shapeCoords = [[0,0], [1,0], [2,0], [-1,0]]
       break;
     case "Z":
-      this.shapeCoords = [[0,0], [0,1], [-1,1], [1,0]]
+      this.shapeCoords = [[0,0], [1,0], [1,-1], [0,1]]
       break;
     case "S":
-      this.shapeCoords = [[0,0], [0,1], [1,1], [-1,0]]
+      this.shapeCoords = [[0,0], [1,0], [1,1], [0,-1]]
       break;
     case "BOX":
-      this.shapeCoords = [[0,0], [0,1], [1,0], [1,1]]
+      this.shapeCoords = [[0,0], [1,0], [0,1], [1,1]]
       break;
   };
   this.color = color;
