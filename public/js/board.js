@@ -41,3 +41,33 @@ Board.prototype.clearActivePiece = function() {
     }
   }
 };
+
+Board.prototype.canMoveDown = function(activePiece) {
+  for (i = 0; i < activePiece.footprint.length; i++) {
+    if ((this.grid[activePiece[i][0] + 1][activePiece[i][1]] === undefined) ||
+        (this.grid[activePiece[i][0] + 1][activePiece[i][1]] ==="C")) {
+      return false;
+    };
+  };
+  return true;
+}
+
+Board.prototype.canMoveLeft = function(activePiece) {
+  for (i = 0; i < activePiece.footprint.length; i++) {
+    if ((this.grid[activePiece[i][0]][activePiece[i][1] - 1] === undefined) ||
+        (this.grid[activePiece[i][0]][activePiece[i][1] - 1] ==="C")) {
+      return false;
+    };
+  };
+  return true;
+}
+
+Board.prototype.canMoveRight = function(activePiece) {
+  for (i = 0; i < activePiece.footprint.length; i++) {
+    if ((this.grid[activePiece[i][0]][activePiece[i][1] + 1] === undefined) ||
+        (this.grid[activePiece[i][0]][activePiece[i][1] + 1] ==="C")) {
+      return false;
+    };
+  };
+  return true;
+}
