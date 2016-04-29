@@ -92,3 +92,26 @@ Board.prototype.deadSquareAtTop = function(board) {
   }
   return false
 }
+
+Board.prototype.deleteCompleteRows = function(board) {
+  var completeRows = []
+  for (var r = 4; r < 24; r++) {
+    if (this.grid[r][0] === "C" && this.grid[r][1] === "C" && this.grid[r][2] === "C" && this.grid[r][3] === "C" && this.grid[r][4] === "C" && this.grid[r][5] === "C" && this.grid[r][6] === "C" && this.grid[r][7] === "C" && this.grid[r][8] === "C" && this.grid[r][9] === "C") {
+      completeRows.push(r)
+    }
+  }
+  this.clearCompleteRows(board, completeRows)
+}
+
+Board.prototype.clearCompleteRows = function(board, completeRows) {
+  for (var r = 0; r < completeRows.length; r++) {
+    for (var c = 0; c < 10; c++) {
+      this.grid[completeRows[r]][c] = 1
+    }
+  }
+  this.dropDeadSquares(board)
+}
+
+Board.prototype.dropDeadSquares = function(board) {
+
+}
