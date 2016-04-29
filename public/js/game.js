@@ -51,6 +51,7 @@ Game.prototype.coreGameLoop = function() {
     this.board.placeActivePiece(this.activePiece);
     this.boardView.clearBoard(this.board);
     this.boardView.renderBoard(this.board);
+    this.board.deleteCompleteRows(this.board);
   } else {
     this.endGameCycle()
   }
