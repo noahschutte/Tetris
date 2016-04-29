@@ -63,6 +63,20 @@ Game.prototype.startGameCycle = function() {
   setInterval(this.coreGameLoop.bind(this), 1000 / this.frameRate);
 };
 
+$(document).on('keyup', function(event) {
+    if(event.keyCode == 37 && game.board.canMoveLeft(game.activePiece)) {
+      game.activePiece.moveLeft();
+    };
+    if(event.keyCode == 38) {
+      game.activePiece.rotate();
+    };
+    if(event.keyCode == 39 && game.board.canMoveRight(game.activePiece)) {
+      game.activePiece.moveRight();
+    };
+    if(event.keyCode == 40 && game.board.canMoveDown(game.activePiece)) {
+       game.activePiece.moveDown();
+    };
+  });
 
 });
 

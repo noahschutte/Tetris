@@ -42,12 +42,12 @@ Piece.prototype.setFootprint = function() {
 };
 
 Piece.prototype.moveLeft = function() {
-  this.indexCoord[0]--;
+  this.indexCoord[1]--;
   this.footprint = this.setFootprint();
 };
 
 Piece.prototype.moveRight = function() {
-  this.indexCoord[0]++;
+  this.indexCoord[1]++;
   this.footprint = this.setFootprint();
 };
 
