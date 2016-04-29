@@ -8,7 +8,7 @@ function Piece(shape, color) {
       this.shapeCoords = [[0,0], [1,0], [2,0], [0,-1]]
       break;
     case "T":
-      this.shapeCoords = [[0,0], [1,0], [0,-1], [0,-1]]
+      this.shapeCoords = [[0,0], [1,0], [0,-1], [0,1]]
       break;
     case "LINE":
       this.shapeCoords = [[0,0], [1,0], [2,0], [-1,0]]
@@ -52,7 +52,6 @@ Piece.prototype.moveRight = function() {
 };
 
 Piece.prototype.moveDown = function() {
-
   this.indexCoord[0]++;
   this.footprint = this.setFootprint();
 }
@@ -64,4 +63,32 @@ Piece.prototype.rotate = function() {
   this.footprint = this.setFootprint();
 };
 
+Board.prototype.canMoveDown = function(activePiece) {
+  for (i = 0, i < activePiece.footprint.length, i++) {
+    if ((this.grid[activePiece[i][0] + 1][activePiece[i][1]] === undefined) ||
+        (this.grid[activePiece[i][0] + 1][activePiece[i][1]] ==="C")) {
+      return false;
+    };
+  };
+  return true;
+}
 
+Board.prototype.canMoveLeft = function(activePiece) {
+  for (i = 0, i < activePiece.footprint.length, i++) {
+    if ((this.grid[activePiece[i][0]][activePiece[i][1] - 1] === undefined) ||
+        (this.grid[activePiece[i][0]][activePiece[i][1] - 1] ==="C")) {
+      return false;
+    };
+  };
+  return true;
+}
+
+Board.prototype.canMoveRight = function(activePiece) {
+  for (i = 0, i < activePiece.footprint.length, i++) {
+    if ((this.grid[activePiece[i][0]][activePiece[i][1] + 1] === undefined) ||
+        (this.grid[activePiece[i][0]][activePiece[i][1] + 1] ==="C")) {
+      return false;
+    };
+  };
+  return true;
+}
