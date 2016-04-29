@@ -12,7 +12,10 @@ td {
   display: none;
 }
 
-
 .full {
   background-color: black;
+}
+
+#hidden {
+  display: none;
 }
