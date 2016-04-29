@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $('#start-game-button').on('click', function(event) {
-    startGame();
+    game.startGameCycle();
   })
 
 function Game() {
@@ -11,7 +11,8 @@ function Game() {
   this.coreTimer = 0;
   this.timeRunning = 0;
   this.difficultyLevel = 1;
-  this.activePiece = this.newPiece()
+  this.activePiece = this.newPiece();
+  this.intervalId = null
 }
 
 var shapesArray = ["L", "J", "T", "LINE", "Z", "S", "BOX"]
@@ -22,10 +23,6 @@ Game.prototype.newPiece = function() {
 
 var game = new Game();
 
-function startGame() {
-  game.startGameCycle();
-}
-
 Game.prototype.updateTime = function() {
   $('#timer').html(this.secondsRunning());
 };
@@ -35,8 +32,7 @@ Game.prototype.secondsRunning = function() {
 };
 
 Game.prototype.coreGameLoop = function() {
-  // debugger;
-  // while (!this.board.deadSquareAtTop(this.board)) {
+  if (!this.board.deadSquareAtTop(this.board)) {
     this.coreTimer++;
 
     if (this.coreTimer % 10 === 0) {
@@ -55,12 +51,18 @@ Game.prototype.coreGameLoop = function() {
     this.board.placeActivePiece(this.activePiece);
     this.boardView.clearBoard(this.board);
     this.boardView.renderBoard(this.board);
-  // }
-  // console.log("Game Over")
+  } else {
+    this.endGameCycle()
+  }
 };
 
 Game.prototype.startGameCycle = function() {
-  setInterval(this.coreGameLoop.bind(this), 1000 / this.frameRate);
+  this.intervalId = setInterval(this.coreGameLoop.bind(this), 1000 / this.frameRate);
+};
+
+Game.prototype.endGameCycle = function() {
+  clearInterval(this.intervalId)
+  $('#hidden').show();
 };
 
 $(document).on('keyup', function(event) {
