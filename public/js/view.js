@@ -18,3 +18,11 @@ BoardView.prototype.renderBoard = function(board) {
     }
   }
 }
+
+BoardView.prototype.clearBoard = function(board) {
+  for (var r = 0; r < board.grid.length; r++) {
+    for (var c = 0; c < board.grid[r].length; c++) {
+      $('#row-' + r + ' .col-' + c).removeClass('full');
+    }
+  }
+}
