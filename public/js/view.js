@@ -30,3 +30,4 @@ BoardView.prototype.clearBoard = function(board) {
     }
   }
 }
+
