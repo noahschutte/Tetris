@@ -108,7 +108,7 @@ Board.prototype.canMoveRight = function(activePiece) {
 Board.prototype.canRotate = function(activePiece) {
   for (var k = 0; k < activePiece.footprint.length; k++) {
     if (!this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[k][1]] ||
-        this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[i][k]] ==="C") {
+        this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[k][1]] ==="C") {
       return false;
     };
   };
