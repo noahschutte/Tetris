@@ -16,4 +16,5 @@ Add a display for score as player clears lines.
 
 ## Contact Us with feedback or appreciation
 noahschutte@gmail.com
+
 daniel.homer6@gmail.com
