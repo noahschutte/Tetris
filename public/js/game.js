@@ -82,4 +82,3 @@ $(document).on('keyup', function(event) {
   });
 
 });
-
