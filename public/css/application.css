@@ -3,13 +3,20 @@ body div {
   padding-right: 20%;
 }
 
+#preview, #next {
+  margin-left: 200px;
+}
+
+#boardView {
+  margin-top: -140px;
+}
+
 td {
   color: white;
   border: 1px solid black;
 }
 
-#row-0 td, #row-1 td, #row-2 td, #row-3 td {
-  border: 1px dashed black;
+#boardView #row-0 td, #boardView #row-1 td, #boardView #row-2 td, #boardView #row-3 td {
   display: none;
 }
 
@@ -23,7 +30,5 @@ td {
 }
 
 .active {
-  background-color: red;
-  color: red;
 }
 
