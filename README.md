@@ -1,6 +1,6 @@
 # Tetris
 #### Play Now
-http://noahschutte.github.io/Tetris/app/views/
+www.webuilttetris.com
 ## Our Mission
 
 To create a javascript game.
