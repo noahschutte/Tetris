@@ -12,7 +12,7 @@ https://github.com/dchome
 https://github.com/noahschutte
 
 ## Future Implementations
-Add a display for score as player clears lines.
+Hold next piece for future play.
 
 ## Contact Us with feedback or appreciation
 noahschutte@gmail.com
