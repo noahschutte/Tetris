@@ -23,14 +23,15 @@ var Board = function() {
   [1,1,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1],
-  [1,1,1,1,1,1,1,1,1,1]]
-}
+  [1,1,1,1,1,1,1,1,1,1]];
 
-Board.prototype.placeActivePiece = function(activePiece) {
-  for (var i = 0; i < activePiece.footprint.length; i++) {
-    this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1]] = "X";
-  }
-};
+  this.previewGrid = [[1,1,1,1,1,1],
+                      [1,1,1,1,1,1],
+                      [1,1,1,1,1,1],
+                      [1,1,1,1,1,1],
+                      [1,1,1,1,1,1],
+                      [1,1,1,1,1,1]];
+}
 
 Board.prototype.clearActivePiece = function() {
   for (var r = 0; r < this.grid.length; r++) {
@@ -39,6 +40,28 @@ Board.prototype.clearActivePiece = function() {
         this.grid[r][c] = 1
       }
     }
+  }
+};
+
+Board.prototype.placeActivePiece = function(activePiece) {
+  for (var i = 0; i < activePiece.footprint.length; i++) {
+    this.grid[activePiece.footprint[i][0]][activePiece.footprint[i][1]] = "X";
+  }
+};
+
+Board.prototype.clearNextPiece = function() {
+  for (var r = 0; r < this.previewGrid.length; r++) {
+    for (var c = 0; c < 10; c++) {
+      if (this.previewGrid[r][c] === "C") {
+        this.previewGrid[r][c] = 1
+      }
+    }
+  }
+};
+
+Board.prototype.placeNextPiece = function(nextPiece) {
+  for (var i = 0; i < nextPiece.previewFootprint.length; i++) {
+    this.previewGrid[nextPiece.previewFootprint[i][0]][nextPiece.previewFootprint[i][1]] = "C";
   }
 };
 
@@ -84,9 +107,8 @@ Board.prototype.canMoveRight = function(activePiece) {
 
 Board.prototype.canRotate = function(activePiece) {
   for (var k = 0; k < activePiece.footprint.length; k++) {
-    console.log("in canRotate")
     if (!this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[k][1]] ||
-        this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[i][k]] ==="C") {
+        this.grid[activePiece.potentialFootprint()[k][0]][activePiece.potentialFootprint()[k][1]] ==="C") {
       return false;
     };
   };
@@ -104,27 +126,28 @@ Board.prototype.deadSquareAtTop = function(board) {
   return false
 }
 
-Board.prototype.deleteCompleteRows = function(board) {
-  var completeRows = []
+Board.prototype.completeRows = function () {
+  var completeRows = [];
   for (var r = 4; r < 24; r++) {
-    if (this.grid[r][0] === "C" && this.grid[r][1] === "C" && this.grid[r][2] === "C" && this.grid[r][3] === "C" && this.grid[r][4] === "C" && this.grid[r][5] === "C" && this.grid[r][6] === "C" && this.grid[r][7] === "C" && this.grid[r][8] === "C" && this.grid[r][9] === "C") {
+    var complete = true
+    for (var c = 0; c < 10; c++) {
+      if (this.grid[r][c] != "C") {
+        complete = false;
+      }
+    }
+    if (complete === true) {
       completeRows.push(r)
     }
   }
-  this.clearCompleteRows(board, completeRows)
+  return completeRows;
 }
 
-Board.prototype.clearCompleteRows = function(board, completeRows) {
-  for (var targetIndex = 0; targetIndex < completeRows.length; targetIndex++) {
-    for (var r = completeRows[targetIndex]; r > 1; r--) {
+Board.prototype.deleteCompleteRows = function() {
+  for (var targetIndex = 0; targetIndex < this.completeRows().length; targetIndex++) {
+    for (var r = this.completeRows()[targetIndex]; r > 1; r--) {
       for (var c = 0; c < 10; c++) {
         this.grid[r][c] = this.grid[r-1][c]
       }
     }
   }
-  this.dropDeadSquares(board)
-}
-
-Board.prototype.dropDeadSquares = function(board) {
-
 }

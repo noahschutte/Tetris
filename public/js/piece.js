@@ -1,4 +1,4 @@
-function Piece(shape, color) {
+function Piece(shape) {
   this.shape = shape;
   switch(shape) {
     case "L":
@@ -23,11 +23,35 @@ function Piece(shape, color) {
       this.shapeCoords = [[0,0], [1,0], [0,1], [1,1]]
       break;
   };
-  this.color = color;
+  switch(shape) {
+    case "L":
+      this.color = "blue";
+      break;
+    case "J":
+      this.color = "red";
+      break;
+    case "T":
+      this.color = "green";
+      break;
+    case "LINE":
+      this.color = "orange";
+      break;
+    case "Z":
+      this.color = "yellow";
+      break;
+    case "S":
+      this.color = "purple";
+      break;
+    case "BOX":
+      this.color = "brown";
+      break;
+  };
   this.isActive = true;
   this.indexCoord = [2, 5];
+  this.indexPreviewCoord = [2,2];
   this.buildSquares();
   this.footprint = this.setFootprint();
+  this.previewFootprint = this.setPreviewFootprint();
 }
 
 Piece.prototype.buildSquares = function() {
@@ -39,6 +63,10 @@ Piece.prototype.buildSquares = function() {
 
 Piece.prototype.setFootprint = function() {
   return [this.indexCoord, this.squares[1].boardCoord(this.indexCoord), this.squares[2].boardCoord(this.indexCoord), this.squares[3].boardCoord(this.indexCoord)];
+};
+
+Piece.prototype.setPreviewFootprint = function() {
+  return [this.indexPreviewCoord, this.squares[1].boardCoord(this.indexPreviewCoord), this.squares[2].boardCoord(this.indexPreviewCoord), this.squares[3].boardCoord(this.indexPreviewCoord)];
 };
 
 Piece.prototype.moveLeft = function() {
@@ -64,8 +92,5 @@ Piece.prototype.rotate = function() {
 };
 
 Piece.prototype.potentialFootprint = function () {
-  console.log("in potentialFootprint");
   return [this.indexCoord, this.squares[1].nextBoardCoord(this.indexCoord), this.squares[2].nextBoardCoord(this.indexCoord), this.squares[3].nextBoardCoord(this.indexCoord)];
 }
-
-

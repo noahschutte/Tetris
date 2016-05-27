@@ -27,7 +27,6 @@ Square.prototype.boardCoord = function(axisCoord) {
 };
 
 Square.prototype.nextBoardCoord = function(axisCoord) {
-  console.log("in nextBoardCoord")
   return [(this.nextCoord()[0] + axisCoord[0]), (this.nextCoord()[1] + axisCoord[1])]
 }
 
@@ -43,4 +42,3 @@ function sameArray(array1, array2) {
   };
   return true;
 }
-

@@ -8,9 +8,7 @@
   <script src="../../public/js/square.js"></script>
   <script src="../../public/js/piece.js"></script>
   <script src="../../public/js/board.js"></script>
-  <script src="../../public/js/timer.js"></script>
   <script src="../../public/js/game.js"></script>
-  <script src="../../public/js/user-input.js"></script>
 
   <title>Tetris</title>
 </head>
@@ -18,10 +16,26 @@
   <div>
     <h1>Tetris</h1>
     <button id="start-game-button">Start Game</button>
-    <p id="timer"></p>
+    <p></p>
+    <table id="preview">
+    </table>
     <table id="boardView">
     </table>
-    <p id="hidden">Game Over</p>
+    <p>Timer: <span id="timer"><span></p>
+    <p>Score: <span id="score"></span></p>
+    <p>Level: <span id="level">1</span></p>
+    <p id="hidden">Game Over! Refresh the page to play again.</p>
+    <p>Instructions:</p>
+    <ul>
+      <li>Up Arrow:     Rotate Piece</li>
+      <li>Down Arrow:   Move Piece Down</li>
+      <li>Left Arrow:   Move Piece Left</li>
+      <li>Right Arrow:  Move Piece Right</li>
+      <li>Space Bar:    Drop Piece</li>
+    </ul>
+    <p>A total of 5 hours have been invested building this product.</p>
+    <p>Meet the engineers: <a href="https://www.linkedin.com/in/daniel-homer-b58320a4">Daniel Homer</a> and <a href="https://www.linkedin.com/in/noahschutte">Noah Schutte</a></p>
+    <p><a href="https://github.com/noahschutte/Tetris">Admire the code on Github</a></p>
   </div>
 </body>
 </html>
